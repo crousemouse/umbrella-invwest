@@ -1,0 +1,296 @@
+a {
+  color: @link;
+  &:hover {
+    text-decoration: none;
+    color: @yellow;
+  }
+}
+
+/*
+  BUTTON STYLES
+                */
+
+.btn {
+  text-transform: uppercase;
+  font-family: @headline;
+  font-size: 1.5em;
+}
+
+.btn-primary {
+  background-color: @yellow;
+  color: @white;
+  &:hover {
+    background-color: @link;
+  }
+}
+
+input.btn.btn-primary {
+  border: none;
+  font-size: 32px;
+  height: 50px;
+  margin: 20px 0;
+}
+
+.pager .load-more {
+  text-align: center;
+  margin: 0 auto;
+  text-transform: uppercase;
+  a {
+    color: @white;
+    background-color: @yellow;
+    &:hover {
+      background-color: @yellow;
+    }
+  }
+}
+
+.archive .primary-featured-post,
+.archive .secondary-featured-post {
+  border: 0;
+}
+
+/*
+  SIDEBAR
+                */
+
+.largo-recent-posts {
+  margin: 0 0 0 12px;
+  p {
+    padding: 6px 0 18px;
+  }
+  h5 {
+    font-family: @headline;
+    font-size: 24px;
+    line-height: 1.1;
+    &.top-tag {
+      font-family: @sans;
+      font-size: 16px;
+    }
+  }
+}
+
+.largo-recent-posts 
+#sidebar .widgettitle {
+  font-family: @headline;
+  text-align: center;
+  font-weight: 400;
+  font-size: 150%;
+}
+
+.largo-recent-posts .sep,
+.largo-recent-posts .entry-date,
+.largo-recent-posts .byline div  {
+  display: none;
+}
+
+
+/*
+  SERIES SIDEBAR
+                */
+
+.largo-post-series-links {
+  margin: 0;
+  h3.widgettitle {
+    display: none;
+  }
+  div.series-label h5 {
+    font-weight: 400;
+    font-size: 150%;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+}
+
+/*
+STAFF PAGE and AUTHOR BOXES
+        */
+
+.user-list .author-box {
+  background-color: @white;
+}
+
+.author-box .widgettitle,
+.author-box .widgettitle .fn {
+  font-family: @headline;
+  font-weight: 400;
+}
+
+.author-box p {
+  font-family: @sans;
+}
+
+.article-bottom {
+  h3 {
+    font-size: 32px;
+  }
+  .author-posts-link {
+    margin-bottom: 16px;
+    display: inline-block;
+  }
+}
+
+.archive-background .author-box p {
+  margin-bottom: 16px;
+}
+
+.author-box p.email::before {
+  display: inline-block;
+  content: '\75';
+  font-family: fontello;
+  font-style: normal;
+  font-weight: normal;
+  height: 24px;
+  margin-right: 3.20000004768372px;
+  opacity: 1;
+  speak: none;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  width: 16px;
+}
+
+.user-list .author-box h3,
+.archive-background .author-box h3 {
+  margin-bottom: 8px;
+}
+
+.user-list p.job-title,
+.archive-background .author-box p.job-title {
+  margin-top: 0;
+}
+
+.user-list .job-title,
+.user-list .email {
+  display: inline-block;
+}
+
+.author-box p {
+  clear: both;
+}
+.widget .author-box .social-links {
+  display: block;
+  margin-left: 20px
+}
+
+@media (max-width: 480px) {
+  .author-box div.photo {
+    width: 100%;
+    margin-right: 0;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .author-box .details {
+    width: 100%;
+  }
+}
+
+/* AWARDS */
+
+.widget .award-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+/*
+  PRE FOOTER
+  Largo Donate Widget, Text Widget - Partner image list
+
+                */
+
+.before-footer-wrapper {
+  background-color: @white;
+
+  ul.partner-logos {
+    list-style: none;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    li {
+      display: inline-block;
+      padding: 40px;
+    }
+  }
+
+  .widget+.widget {
+    border-top: none;
+  }
+
+  .widget.largo-donate {
+    h3.widgettitle {
+      font-family: @headline;
+      font-weight: 300;
+      font-size: 54px;
+      text-transform: none;
+    }
+
+    p {
+      width: 50%;
+      font-family: @sans;
+      font-weight: 300;
+    }
+
+    a.btn-primary {
+      width: 20%;
+      height: 50px;
+      font-size: 32px;
+    }
+  }
+}
+
+.before-footer-wrapper .widget+.widget,
+#sidebar .widget+.widget {
+  border-top: none;
+}
+
+.largo-donate, .largo-donate p {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*
+  FOOTER
+                */
+#menu-footer-navigation li,
+#supplementary ul.menu li {
+  border: none;
+  margin-top: 8px;
+  a {
+    color: @yellow;
+    &:hover {
+      color: @white;
+    }
+  }
+}
+
+#site-footer p {
+  font-size: 15px;
+  color: @grey;
+}
+
+.footer-credit {
+  color: @grey;
+}
+
+#site-footer .footer-credit a,
+#site-footer .back-to-top a,
+#site-footer a {
+  color: @yellow;
+}
+
+#site-footer .footer-credit a:hover,
+#site-footer .back-to-top a:hover,
+#site-footer a:hover {
+  color: @white;
+}
+
+#site-footer p.back-to-top {
+  float: none;
+  text-align: left;
+  font-size: 1.5em;
+  font-family: @headline;
+  font-weight: 400;
+  text-transform: uppercase;
+}

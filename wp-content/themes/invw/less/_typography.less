@@ -1,0 +1,125 @@
+/*
+  GENERAL TYPOGRAPHY
+                */
+
+body {
+  font-family: @serif;
+  color: @black;
+}
+
+/*
+  STORY TYPOGRAPHY
+                */
+h1.entry-title,
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+  font-family: @headline;
+}
+
+.byline,
+.top-tag,
+.top-date,
+.post-social span.print,
+.post-social span.email,{
+  font-family: @sans;
+}
+
+h1.entry-title {
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.entry-content {
+  h1 {
+    font-style: italic;
+    font-size: 24px;
+  }
+  h3 {
+    font-weight: 300;
+  }
+  h6 {
+    text-align: right;
+    font-weight: 300;
+  }
+}
+
+/*
+  ARCHIVE TYPOGRAPHY
+                */
+
+.archive article h2,
+.largo-recent-posts h5 {
+  a {
+    color: @black;
+    &:hover {
+      color: @black;
+    }
+  }
+}
+
+.archive article h2 {
+  line-height: 110%;
+}
+
+.archive .author-box h1 {
+  margin: 0.5em;
+}
+
+/*
+  APPLY HEADLINE FONT
+                */
+.page-title,
+.author-box h1,
+#related-post-nav,
+#related-post-nav h5,
+.related-items a {
+  font-family: @headline;
+  font-weight: 400;
+}
+
+.page-title {
+  text-transform: uppercase;
+}
+
+/*
+  LIBERALLY APPLY SANS
+                */
+ .widget-title,
+ .widget p,
+ footer p,
+ footer li,
+ #sidebar .widgettitle,
+ .rss-subscribe-link,
+ .top-tag a,
+ article.post>header h5,
+ .byline,
+ .wp-media-credit,
+ .wp-caption-text,
+ .article-bottom h3,
+ .article-bottom p,
+ .author-posts-link,
+ .previous,.next,
+ .previous h5,
+ .next h5,form,
+ #reply-title,
+ input,
+ .sticky-footer-holder,
+ .sticky-footer-holder h4,
+ .largo-donate p,
+ .stories h3.widgettitle,
+ .widgettitle .largo-featured h5,
+ .archive .entry-content h5.byline,
+ .load-more,
+ .archive h5,
+ .archive-background .related-topics,
+ .archive .archive-background p,
+ .home-partner,
+ .home-partner a {
+   font-family: @sans;
+ }

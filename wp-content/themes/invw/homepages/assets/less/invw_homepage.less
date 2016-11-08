@@ -1,0 +1,472 @@
+@import "../less/_options.less";
+
+/* All of your homepage-specific styles go here */
+
+.home-grid {
+  width: 100%;
+  clear: both;
+}
+.stories article.hg-cell {
+  margin: 0;
+  float: left;
+  border-bottom: none;
+  border: 1px solid @border-color;
+  box-sizing: border-box;
+  // And now to get all the borders to 2px:
+  &.hg-featured, &.hg-4 { border-left-width: 2px; }
+  &.hg-featured, &.hg-1, &.hg-2 { border-top-width: 2px; }
+  &.hg-2, &.hg-3, &.hg-7 { border-right-width: 2px; }
+  &.hg-4, &.hg-6, &.hg-7 { border-bottom-width: 2px; }
+}
+
+.hg-cell-inner {
+  padding: 15px;
+  h2 a,
+  h2 a:hover,
+  h2 a:focus {
+    color: @black;
+    display: inline-block;
+    -webkit-tap-highlight-color: @black;
+  }
+  
+  h2 {
+    font-family: @headline;
+    line-height: 1.1;
+    a {
+      box-shadow: 0 -10px 0px -2px @white inset, 0 -10px 0px -2px @black inset;
+      transition: box-shadow 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+      display: inline;
+      &:hover {
+        box-shadow: 0 -6px 0px -2px @white inset, 0 -10px 0px -2px @black inset;
+        display: inline;
+      }
+    }
+  }
+
+  .top-tag {
+    font-weight: 300;
+    a {
+      color: @grey;
+      &:hover {
+        color: @yellow;
+      }
+    }
+    .post-category-link a:hover {
+      text-decoration: none;
+    }
+    .hg-date-published {
+      color: @grey;
+    }
+  }
+}
+
+.hg-featured {
+  background-color: @yellow;
+
+  .hg-cell-inner {
+    h2 a {
+      box-shadow: 0 -10px 0px -2px @yellow inset, 0 -10px 0px -2px @black inset;
+      transition: box-shadow 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+      display: inline;
+      &:hover {
+        box-shadow: 0 -6px 0px -2px @yellow inset, 0 -10px 0px -2px @black inset;
+        display: inline;
+      }
+    }
+  }
+
+  .top-tag {
+    color: #fff;
+    &:after {
+      content: " \2191";
+    }
+  }
+}
+
+.home-partner {
+  margin-top: 1vw;
+  span {
+    text-transform: uppercase;
+    color: @grey;
+  }
+}
+
+.home-partner,
+.home-partner-link {
+  font-family: @sans;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.home-partner-link {
+  display: block;
+  color: @yellow;
+}
+
+.hg-cell .home-partner span {
+  color: @grey;
+}
+
+.home-partner-link:hover {
+  text-decoration: underline;
+  color: @yellow;
+}
+
+.hg-featured .home-partner span {
+  color: @white;
+}
+
+.hg-featured a.home-partner-link {
+  color: @black;
+}
+
+/**
+ * The Award-Winning Series and Journalism with Impact sections.
+ */
+
+.awardwinningseries,
+.journalismwithimpact {
+  background-color: #EFEFEB;
+  padding: 50px 0;
+  text-align: center;
+  h1.sectiontitle {
+    font-family: @headline;
+    font-weight: 300;
+  }
+  h5.sectionsubtitle {
+    font-family: @sans;
+    font-weight: 300;
+  }
+  .series-cells {
+    margin: auto;
+    width: 90%;
+  }
+}
+
+.awardwinningseries-cell,
+.journalismwithimpact-cell {
+  background-color: #FFF;
+  height: 400px;
+}
+
+.awardwinningseries-cell-inner,
+.journalismwithimpact-cell-inner {
+  padding: 15px;
+  text-align: left;
+  a,
+  a:hover,
+  a:focus {
+    color: @black;
+    img {
+      width: 100%;
+    }
+  }
+  h5.top-tag {
+    color: #999;
+    font-size: 13px;
+    font-family: @sans;
+  }
+  h3 {
+    font-family: @headline;
+    font-weight: 300;
+  }
+  .description {
+    font-family: @sans;
+  }
+}
+
+/**
+ * Homepage Impact Image widget area/sidebar - The image that appears between the sections
+ * Award-Winning Series and Journalism with Impact.
+ */
+
+.widget.impactimage {
+  padding: 0;
+  img {
+    max-width: 100% !important;
+  }
+  .widget_sp_image-description {
+    text-align: right;
+    font-family: @sans;
+    font-weight: 300;
+    background-color: #EFEFEB;
+    padding-top: 5px;
+    p {
+      margin: 0 10px 0 0;
+    }
+  }
+}
+
+
+/**
+ * Making the homepage grid work
+ *
+ * +-----------+
+ * |F |1 |2    |
+ * |  |  +-----+
+ * |  |  |3    |
+ * +-----------+
+ * |4 |5    |7 |
+ * |  +-----+  |
+ * |  |6    |  |
+ * +--------+--+
+ *
+ * These style breakpoints are based on Largo's breakpoints for the width of #page.
+ * The maximum width of #page is 1170px, but its padding changes. This grid was calculated so each part has a 2:1 ratio.
+ *
+ * @uses calc http://caniuse.com/#search=calc reports that this is good for simple addition and subtraction, which is the present use case. Not that box-shadow will not render in IE 9-11, or in a transform, or with children with the inherit property for width. none of that should be a problem.
+ */
+
+.hg-featured,
+.hg-1,
+.hg-4,
+.hg-7 {
+  width: 25%;
+}
+.hg-2,
+.hg-3,
+.hg-5,
+.hg-6 {
+  width: 50%;
+}
+
+// (min-width:769px) and (max-width: 979px) where it is 100% - 18px - 18px
+// (max-width: 769px) where it is effectively 95vw wide, see above
+//  But we won't do that that small, shall we?)
+
+/**
+ * Make the homepage grid responsive
+ *
+ * There are a couple of major breakpoints here, which are used to determine the height and width of the containing #page
+ * #page's max-width is 1170px, and it retains 2.5% padding left and right on each side. At 1231px viewport ( x = 1170px + 2.5%x + 2.5%x )
+ * #page's width stops expanding, which is the point at which we should decouple the height of the homepage grid cells
+ * from the width of the screen. The width of the cells is percent-based on the width of .home-grid.
+ *
+ * The breapoints:
+ * - ( x = 1170px + 2.5%x + 2.5%x ) = 1231px
+ *     - Above this, height is fixed because the width of #page will not increase
+ *     - Below this, height is in vw units to scale with the percent-based width, which is based on #page
+ * - mobile, where the grid dissolves to a column of posts
+ */
+@media (min-width: 1231px) {
+  .hg-featured,
+  .hg-1,
+  .hg-4,
+  .hg-7 {
+    height: calc(~"(1170px/2) - 0.5px");
+  }
+  .hg-2,
+  .hg-3,
+  .hg-5,
+  .hg-6 {
+    height: (1170px/4);
+  }
+  .stories article.hg-7 {
+    margin-top: -(1170px/4);
+  }
+  .hg-cell-inner {
+    h2 {
+      font-size: 50px; // 1170/23
+      line-height: 1.1;
+    }
+    .home-partner,
+    .home-partner-link a {
+      font-size:12px;
+    }
+  }
+}
+
+.hg-featured .hg-cell-inner {
+  h2 {
+    font-size: 62px; // 1170/23
+    line-height: 1.1;
+  }
+}
+
+@media (max-width: 1230px) {
+
+  .hg-featured,
+  .hg-1,
+  .hg-4,
+  .hg-7 {
+    height: calc(~"47.5vw - 0.5px"); // a hack in a hack.
+    // ~"" escapes the expression: http://lesscss.org/features/#features-overview-feature-escaping
+    // The escape was needed because less.js was aggressively simplifying this to 47vw (45.5 - 0.5)
+    // The 0.5px subtraction is to prevent a 1px height difference from breaking the layout.
+  }
+  .hg-2,
+  .hg-3,
+  .hg-5,
+  .hg-6 {
+    height: 23.75vw;
+  }
+  .stories article.hg-7{
+    margin-top: -23.75vw;
+  }
+  .hg-cell-inner {
+    h2 {
+      font-size: 3vw;
+      margin-bottom: 1vw;
+    }
+    h5.top-tag {
+      font-size: 1.25vw;
+    }
+    .home-partner,
+    .home-partner-link a {
+      font-size: 1vw;
+    }
+  }
+  .hg-featured .hg-cell-inner h2 {
+    font-size: 4vw;
+    margin-bottom: 1vw;
+  }
+} /* END BREAKPOINT */
+
+
+@media (min-width: 480px) and (max-width: 900px) {
+  .stories article.hg-cell {
+    margin: 0;
+    clear: both;
+    float: none;
+    width: 100%;
+    height: 20vw;
+    border: 1px solid @border-color !important;
+    box-sizing: border-box;
+  }
+
+  .hg-cell-inner {
+    h2 {
+      font-size: 4vw;
+    }
+    h5.top-tag {
+      font-size: 2vw;
+    }
+
+    .home-partner {
+      display: none;
+    }
+
+  }
+
+  .hg-featured .hg-cell-inner {
+    h2 {
+      font-size: 5vw;
+    }
+  }
+
+  .awardwinningseries,
+  .journalismwithimpact {
+    padding: 0;
+    .span3 {
+      display: block;
+      width: 100%;
+      margin-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .journalismwithimpact {
+    padding-top: 50px;
+  }
+
+  .awardwinningseries-cell,
+  .journalismwithimpact-cell {
+    height: 200px;
+    border: 1px solid @border-color;
+    box-sizing: border-box;
+  }
+
+  .awardwinningseries-cell-inner,
+  .journalismwithimpact-cell-inner {
+    a,
+    a:hover,
+    a:focus {
+      img {
+        width: 25%;
+        float: right;
+      }
+    }
+    .description {
+      width: 70%;
+    }
+    h3 {
+      font-size: 4vw;
+    }
+    h5.top-tag {
+      font-size: 3vw;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .stories article.hg-cell.hg-featured {
+    height: 35vw;
+  }
+  .stories article.hg-cell {
+    margin: 0;
+    clear: both;
+    float: none;
+    width: 100%;
+    height: 30vw;
+    border: 1px solid @border-color !important;
+    box-sizing: border-box;
+  }
+  .hg-cell-inner {
+    h2 {
+      font-size: 6vw;
+    }
+    h5.top-tag {
+      font-size: 3vw;
+    }
+    .home-partner {
+      display:none;
+    }
+  }
+
+  .hg-featured .hg-cell-inner {
+    h2 {
+      font-size:8vw;
+    }
+  }
+
+  .awardwinningseries,
+  .journalismwithimpact {
+    padding: 0;
+    .span3 {
+      display: block;
+      width: 100%;
+      margin-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .journalismwithimpact {
+    padding-top: 50px;
+  }
+
+  .awardwinningseries-cell,
+  .journalismwithimpact-cell {
+    height: 200px;
+    border: 1px solid @border-color;
+    box-sizing: border-box;
+  }
+
+  .awardwinningseries-cell-inner,
+  .journalismwithimpact-cell-inner {
+    a,
+    a:hover,
+    a:focus {
+      img {
+        max-width: 50%;
+        float: right;
+      }
+    }
+    .description {
+      display: none;
+    }
+
+    h1, h2, h3, h4, h5 {
+      max-width: 50%;
+    }
+  }
+}

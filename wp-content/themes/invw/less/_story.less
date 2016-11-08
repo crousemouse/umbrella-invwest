@@ -1,0 +1,122 @@
+/*
+  STORY HEADER
+                */
+.top-date,
+.print,
+.email {
+  text-transform: uppercase;
+}
+
+span.email::before {
+  padding: 0 5px;
+}
+
+h5.top-tag,
+.byline a {
+  a {
+    color: @yellow;
+	&:hover {
+      color: @link;
+    }
+  }
+}
+
+.byline {
+  a {
+    color: @link;
+	&:hover {
+      color: @yellow;
+    }
+  }
+}
+.byline,
+.byline .author {
+  font-weight: 400;
+}
+
+article h2 a,
+article h5 a {
+  color: @black;
+  &:hover {
+    color: @black;
+  }
+}
+
+span.by {
+  display: none;
+}
+
+span.author.vcard {
+  text-transform: uppercase;
+}
+
+.byline-partner {
+  text-align: left;
+  font-family: @sans;
+  font-size: 75%;
+  margin-top: -1.5em;
+  @media (max-width: 900px) {
+    display: block;
+    float: none;
+  }
+}
+h5.byline div {
+  margin-top: 6px;
+}
+.byline-partner span,
+h5.byline div span {
+  text-transform: uppercase;
+  color: @grey;
+}
+
+a.byline-partner-link,
+h5.byline div a {
+  color: @yellow;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+/*
+  STORY BODY
+                */
+
+body.normal.page .hero,
+body.normal.single-post .hero {
+  background-color: @tan;
+}
+
+img.banner {
+  width: 100%;
+  height: 100%;
+}
+
+/* FIX - when elements within the story body (.entry-content) get display:block;
+ * they interact poorly with sidebar. Here, we target common elements to
+ * be display:inline-block; */
+
+ .single .entry-content  {
+   div, iframe, img {
+    display: inline-block;
+  }
+}
+
+/*
+  STORY FOOTER
+                */
+
+.article-bottom p {
+  line-height: 1.4;
+}
+
+.author-box {
+  background: @tan;
+}
+
+.article-bottom .author-box ul li.author-posts-link {
+  margin-top: 0px;
+}
+
+.social-links {
+  margin: 0 auto;
+  width: 100%;
+}
