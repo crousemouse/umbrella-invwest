@@ -20,7 +20,6 @@ Blueprint to use (leave blank for none or use largo): | largo
 Domain to use (leave blank for largo-umbrella.dev): | invwest.dev
 WordPress version to install (leave blank for latest version or trunk for trunk/nightly version): | *hit [Enter]*
 Install as multisite? (y/N): | n
-Install as subdomain or subdirectory? : | subdomain
 Git repo to clone as wp-content (leave blank to skip): | *hit [Enter]*
 Local SQL file to import for database (leave blank to skip): | *This filename must be an absolute path, so the easiest thing to do on a Mac is to drag your mysql file into your terminal window here: the absolute filepath with fill itself in. Absolute filepaths begin from `/` and go all the way to the file.*
 Remove default themes and plugins? (y/N): | y
