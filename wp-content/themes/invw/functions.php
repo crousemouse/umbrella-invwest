@@ -85,28 +85,57 @@ add_filter('largo_render_template_context', 'invw_add_user_profile_fields', 10, 
 
 /**
  * Custom Function to output Investigate West Partners in the action largo_after_post_header
+ * @see invw_byline_partners - this does some wrapping with divs that the other does not do
  */
 function invw_partners() {
-global $post;
+	global $post;
 	$partners_terms_feat = wp_get_object_terms( $post->ID,  'partners' );
 	if ( ! empty( $partners_terms_feat ) ) {
-	    if ( ! is_wp_error( $partners_terms_feat ) ) {
+		if ( ! is_wp_error( $partners_terms_feat ) ) {
 			$partners .= '<div class="entry-content">';
-			$partners .= '<div class="byline-partner"><span>With</span> ';
-			foreach( $partners_terms_feat as $term_feat ) {
-				if($counter > 0 ) {
-				$partners .= ', <a href="' . get_term_link( $term_feat->slug, 'partners' ) . '" class="byline-partner-link"> ' . esc_html( $term_feat->name ) . '</a>'; 
+				$partners .= '<div class="byline-partner"><span>With</span> ';
+				foreach( $partners_terms_feat as $term_feat ) {
+					if($counter > 0 ) {
+						$partners .= ', <a href="' . get_term_link( $term_feat->slug, 'partners' ) . '" class="byline-partner-link"> ' . esc_html( $term_feat->name ) . '</a>';
+					} else {
+						$partners .= '<a href="' . get_term_link( $term_feat->slug, 'partners' ) . '" class="byline-partner-link"> ' . esc_html( $term_feat->name ) . '</a>';
+					}
+					$counter++;
 				}
-				else {
-				$partners .= '<a href="' . get_term_link( $term_feat->slug, 'partners' ) . '" class="byline-partner-link"> ' . esc_html( $term_feat->name ) . '</a>'; 
-				}
-				$counter++;
-			}
-			$partners .= '</div>';
+				$partners .= '</div>';
 			$partners .= '</div>';
 			echo $partners;
-	     }
-     }
+		}
+	}
 }
-
 add_action('largo_after_post_header', 'invw_partners');
+
+/**
+ * Output the partner for a byline, but only on archives
+ *
+ * @param int $post_id the ID of the post
+ * @see INVW_CoAuthors_Byline
+ * @see invw_partners
+ */
+function invw_byline_partners( $post_id ) {
+	if ( is_archive() ) {
+		$partners_terms_feat = wp_get_object_terms( $post_id,  'partners' );
+
+		if ( ! empty( $partners_terms_feat ) ) {
+			if ( ! is_wp_error( $partners_terms_feat ) ) {
+				$partners .= '<div><span>With</span> ';
+				foreach( $partners_terms_feat as $term_feat ) {
+					if($counter > 0 ) {
+						$partners .= ', <a href="' . get_term_link( $term_feat->slug, 'partners' ) . '"> ' . esc_html( $term_feat->name ) . '</a>';
+					} else {
+						$partners .= '<a href="' . get_term_link( $term_feat->slug, 'partners' ) . '"> ' . esc_html( $term_feat->name ) . '</a>';
+					}
+					$counter++;
+				}
+				$partners .= '</div>';
+			}
+		}
+
+		echo $partners;
+	}
+}
