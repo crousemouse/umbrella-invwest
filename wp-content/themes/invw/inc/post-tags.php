@@ -63,16 +63,39 @@ class INVW_CoAuthors_Byline extends Largo_CoAuthors_Byline {
 		echo '<span class="by-author"><span class="by">' . __( 'By', 'largo' ) . '</span> <span class="author vcard" itemprop="author">' . $authors . '</span></span>';
 		$this->maybe_published_date();
 
+		$this->edit_link();
+
 		/*
 		 * Significant addition!
 		 */
 		invw_byline_partners( $this->post_id );
 
+		$this->output = ob_get_clean();
+	}
+}
+
+// For Largo Custom Bylines
+class INVW_Custom_Byline extends Largo_Byline {
+
+	/**
+	 * differs from Largo_Byline in following ways:
+	 * - no avatar
+	 * - no job title
+	 * - no twitter
+	 */
+	function generate_byline() {
+		ob_start();
+		$this->author_link();
+		$this->maybe_published_date();
 		$this->edit_link();
+
+		/*
+		 * Significant addition!
+		 */
+		invw_byline_partners( $this->post_id );
 
 		$this->output = ob_get_clean();
 	}
-
 }
 
 /**
@@ -107,16 +130,13 @@ class INVW_CoAuthors_Byline extends Largo_CoAuthors_Byline {
 
 		if ( isset( $options['values']['largo_byline_text'] ) && !empty( $options['values']['largo_byline_text'] ) ) {
 			// Temporary placeholder for largo custom byline option
-			$byline = new Largo_Custom_Byline( $options );
-			var_log( "POOP");
+			$byline = new INVW_Custom_Byline( $options );
 		} else if ( function_exists( 'get_coauthors' ) ) {
 			// If Co-Authors Plus is enabled and there is not a custom byline
 			$byline = new INVW_CoAuthors_Byline( $options );
-			var_log( "THIS");
 		} else {
 			// no custom byline, no coauthors: let's do the default
 			$byline = new Largo_Byline( $options );
-			var_log( "NORMAL");
 		}
 
 		/**

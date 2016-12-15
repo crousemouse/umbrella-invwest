@@ -205,8 +205,6 @@ function _get_series_from_menu( $menu_name ) {
 function zone_awardwinningseries() {
 	ob_start();
 
-	var_log( wp_get_nav_menu_items( 'Award-Winning Series' ) );
-
 	/**
 	 * The series that should appear in the Award-Winning Series section of the Homepage should be
 	 * arranged in display order in a menu called "Award-Winning Series".
