@@ -4,7 +4,7 @@
  */
 class series_awards_widget extends WP_Widget {
 
-    function series_awards_widget() {
+    function __construct() {
         $widget_ops = array(
             'classname'     => 'series-awards',
             'description'   => __('Shows images of awards won by a series, based on the series associated with the current page. This relies on the menu "Award-Winning Series" where each entry is a series. Within each series menu entry, the award images should be full URLs to the image, delimited by spaces, in the Description field.', 'largo')
