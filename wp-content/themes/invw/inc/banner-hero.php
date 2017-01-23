@@ -138,13 +138,21 @@ function _invw_find_banner($content,&$bannerNode,&$creditNode,&$doc = null) {
 	// make our content a little more reliable to parse
 	$content = wpautop($content);
 
+	// If there's no content, this function will fail.
+	if ( empty( $content ) ) {
+		$bannerNode = null;
+		$creditNode = null;
+		$doc = null;
+		return null;
+	}
+
 	$doc = new SmartDOMDocument();
 	$doc->loadHTML($content);
 	$doc->encoding = 'UTF-8';
 
 	try {
 		$grafs = $doc->documentElement->childNodes->item(0)->childNodes;
-	} catch (Exception $e) {
+	} catch ( ErrorException $e ) {
 		$bannerNode = null;
 		$creditNode = null;
 		$doc = null;
