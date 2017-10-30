@@ -10,7 +10,7 @@ function zone_heroImage() {
 
 	$bigStoryPost = largo_home_single_top();
 	
-	$img = get_the_post_thumbnail($bigStoryPost->ID, 'full');
+	$img = get_the_post_thumbnail($bigStoryPost->ID, 'medium_large');
 	
 	$permalink = get_the_permalink($bigStoryPost->ID);
 	
